@@ -6,9 +6,12 @@ class Node {
 }
 
 class LinkedList {
+  constructor() {
+    this.head = null;
+  }
   append(value) {
     const node = new Node(value);
-    if (Object.keys(this).length === 0) this.head = node;
+    if (this.head === null) this.head = node;
     else {
       let tmp = this.head;
       while (tmp.next !== null) {

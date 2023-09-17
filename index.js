@@ -29,14 +29,10 @@ class LinkedList {
     }
   }
 
-  size() {
-    let size = 0;
-    let tmp = this.head;
-    while (tmp !== null) {
-      tmp = tmp.next;
-      size++;
-    }
-    return size;
+  size(tmp = this.head) {
+    if (tmp === this) tmp = tmp.head;
+    if (tmp === null) return 0;
+    return 1 + this.size(tmp.next);
   }
 }
 const list = new LinkedList();

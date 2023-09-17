@@ -20,6 +20,14 @@ class LinkedList {
       tmp.next = node;
     }
   }
+
+  prepend(value) {
+    if (this.head === null) this.head = new Node(value);
+    else {
+      const tmp = { ...this.head };
+      this.head = new Node(value, tmp);
+    }
+  }
 }
 const list = new LinkedList();
 list.append(15);
@@ -29,4 +37,7 @@ list.append(100);
 console.log(list);
 
 list.append(120);
+console.log(list);
+
+list.prepend(1);
 console.log(list);

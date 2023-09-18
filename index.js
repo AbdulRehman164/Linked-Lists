@@ -9,15 +9,12 @@ class LinkedList {
   constructor() {
     this.head = null;
   }
+
   append(value) {
     const node = new Node(value);
     if (this.head === null) this.head = node;
     else {
-      let tmp = this.head;
-      while (tmp.next !== null) {
-        tmp = tmp.next;
-      }
-      tmp.next = node;
+      this.getTail().next = node;
     }
   }
 
@@ -30,9 +27,20 @@ class LinkedList {
   }
 
   size(tmp = this.head) {
+    // if the list if passed as an argument it does not return wrong result
     if (tmp === this) tmp = tmp.head;
     if (tmp === null) return 0;
     return 1 + this.size(tmp.next);
+  }
+  getHead() {
+    return this.head;
+  }
+
+  getTail(tmp = this.head) {
+    if (!tmp || tmp.next === null) return tmp;
+    else {
+      return this.getTail(tmp.next);
+    }
   }
 }
 const list = new LinkedList();
@@ -49,3 +57,5 @@ list.prepend(1);
 console.log(list);
 
 console.log(list.size());
+console.log(list.getHead());
+console.log(list.getTail());

@@ -46,22 +46,21 @@ class LinkedList {
   at(index) {
     let tmp = this.head; // this is the 0th index
     for (let i = 1; i <= index; i++) {
-      tmp = tmp.next;
+      if (tmp) tmp = tmp.next;
     }
     return tmp;
+  }
+
+  pop(tmp = this.head) {
+    if (tmp && tmp.next.next === null) tmp.next = null;
+    else {
+      tmp ? this.pop(tmp.next) : null;
+    }
   }
 }
 const list = new LinkedList();
 list.append(15);
-console.log(list);
-
 list.append(100);
-console.log(list);
 
-list.append(120);
+list.pop();
 console.log(list);
-
-list.prepend(1);
-console.log(list);
-
-console.log(list.at(0));

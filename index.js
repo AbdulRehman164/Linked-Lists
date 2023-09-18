@@ -42,6 +42,14 @@ class LinkedList {
       return this.getTail(tmp.next);
     }
   }
+
+  at(index) {
+    let tmp = this.head; // this is the 0th index
+    for (let i = 1; i <= index; i++) {
+      tmp = tmp.next;
+    }
+    return tmp;
+  }
 }
 const list = new LinkedList();
 list.append(15);
@@ -56,6 +64,4 @@ console.log(list);
 list.prepend(1);
 console.log(list);
 
-console.log(list.size());
-console.log(list.getHead());
-console.log(list.getTail());
+console.log(list.at(0));

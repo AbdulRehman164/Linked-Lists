@@ -78,8 +78,17 @@ class LinkedList {
       }
     }
   }
+
+  toString() {
+    let str = '';
+    let tmp = this.head;
+    while (tmp) {
+      str += ` ${tmp.data} ->`;
+      tmp = tmp.next;
+    }
+    return str + ' null';
+  }
 }
 const list = new LinkedList();
 list.append(15);
 list.append(100);
-console.log(list.find(100));

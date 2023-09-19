@@ -65,7 +65,21 @@ class LinkedList {
       return this.contains(value, tmp.next);
     }
   }
+
+  find(value) {
+    if (!this.contains(value)) return null;
+    else {
+      let tmp = this.head;
+      let index = 0;
+      while (tmp) {
+        if (tmp.data === value) return index;
+        tmp = tmp.next;
+        index++;
+      }
+    }
+  }
 }
 const list = new LinkedList();
 list.append(15);
 list.append(100);
+console.log(list.find(100));

@@ -88,7 +88,29 @@ class LinkedList {
     }
     return str + ' null';
   }
+
+  removeAt(index) {
+    if (this.at(index) === null || this.at(index).next === null) this.pop();
+    else if (index === 0) this.head = this.head.next;
+    else {
+      let prev = this.head;
+      let next = this.head.next;
+      let i = 0;
+      while (next) {
+        if (index - 1 === i) prev.next = next.next;
+        prev = next;
+        next = next.next;
+        i++;
+      }
+    }
+  }
 }
 const list = new LinkedList();
 list.append(15);
 list.append(100);
+list.append(150);
+list.append(1000);
+list.append(1);
+list.append(10);
+list.removeAt(1);
+console.log(list.toString());

@@ -57,10 +57,15 @@ class LinkedList {
       tmp ? this.pop(tmp.next) : null;
     }
   }
+
+  contains(value, tmp = this.head) {
+    if (!tmp) return false;
+    if (value === tmp.data) return true;
+    else {
+      return this.contains(value, tmp.next);
+    }
+  }
 }
 const list = new LinkedList();
 list.append(15);
 list.append(100);
-
-list.pop();
-console.log(list);
